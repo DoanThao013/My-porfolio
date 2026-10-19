@@ -1,64 +1,59 @@
-# Doan Thanh Thao: Portfolio
+<div align="center">
 
-A single-page, fairytale-style portfolio about cloud infrastructure, Kubernetes, Terraform and DevSecOps work.
+# 🏰 Doan Thanh Thao
+### A DevSecOps story, one chapter at a time
 
-- Twilight hero with drifting paper lanterns
-- Tap the castle for a wish and fireworks
-- Sticky chapter tabs with a reading-progress bar
-- Spellbook: tap a skill to highlight the quests and notes where it was used
-- Day and night theme toggle (remembers your choice)
+**DevSecOps · Cloud · Infrastructure · Systems**
 
-Plain HTML, CSS and JavaScript. No build step and no dependencies. Fonts load from Google Fonts.
+*Building with curiosity. Delivering with security. Growing with purpose.*
 
-## Project structure
+</div>
 
-```
-thao-portfolio/
-├── index.html        Page content and markup
-├── css/
-│   └── style.css     Colours, layout, lanterns, tabs, responsive rules
-├── js/
-│   └── main.js       Theme toggle, lanterns, fireworks, skill highlight, tab tracking, copy buttons
-├── assets/
-│   └── favicon.svg   Browser tab icon
-├── README.md
-└── .gitignore
-```
+---
 
-## Run locally
+## ✨ Welcome to my corner of the web
 
-Open `index.html` in a browser. To serve it instead:
+This portfolio is a personal storybook of my journey in DevSecOps: the experiences that shape me, the projects I learn from, and the ideas I want to bring to life.
 
-```bash
-python3 -m http.server 8000
-# then visit http://localhost:8000
-```
+Set beneath a twilight sky with floating lanterns and a wish-making castle, it brings together my professional interests and a little imagination.
 
-## Deploy with GitHub Pages
+## 👋 About me
 
-1. Push this folder to a public repository.
-2. Go to **Settings > Pages**.
-3. Under **Build and deployment**, choose **Deploy from a branch**, branch `main`, folder `/ (root)`, then **Save**.
-4. After a minute or two the site is live at `https://<username>.github.io/<repository>/`.
+Hi, I'm **Thao**, a third-year networking student pursuing a career as a **DevSecOps engineer**.
 
-## Edit the content
+Through internships and hands-on projects, I have gained experience in deployment automation, secure access management, and infrastructure design. I believe security belongs in delivery from the start, and automation should make systems safer and easier to maintain.
 
-| What | File | Where to look |
-| --- | --- | --- |
-| Name, tagline, chips | `index.html` | `<header class="hero">` |
-| About text and facts | `index.html` | `<section id="about">` |
-| Internships and volunteering | `index.html` | `<section id="chapters">` |
-| Projects | `index.html` | `<section id="quests">` (each `<article class="quest">`) |
-| Skills | `index.html` | `<section id="spellbook">` (each `<button class="skill">`) |
-| Email, phone, profile links | `index.html` | `<section id="contact">` |
-| Colours and fonts | `css/style.css` | the `:root` block at the top |
-| Wish messages | `js/main.js` | the `wishes` array |
-| Number of lanterns | `js/main.js` | `seedLanterns()` |
+My full-stack background helps me understand application needs when making infrastructure decisions. I'm a curious, fast learner who values understanding the reasons behind a design and growing alongside a thoughtful team.
 
-### Skill highlighting
+## 📖 Inside the storybook
 
-Each project or note carries a `data-skills` attribute with space-separated skill keys, for example `data-skills="gcp kubernetes terraform ansible"`. A skill button uses the same key in `data-skill`, for example `data-skill="terraform"`. Add the key to both sides to connect a new skill to a project.
+| Chapter | What you'll find |
+| :--- | :--- |
+| **About** | A short introduction to who I am and what drives me. |
+| **Story** | My internships, experiences, and milestones along the way. |
+| **Quests** | Projects that reflect my approach to security, automation, and reliable systems. |
+| **Spellbook** | The skills I am developing and where I have put them into practice. |
+| **Contact** | An invitation to connect, exchange ideas, and explore opportunities together. |
 
-## Before you publish
 
-A public repository shows everything in these files, including the email and phone number in the Contact section. Remove anything you do not want to share. Never commit tokens, passwords or `.env` files.
+## 🌱 Why this portfolio exists
+
+More than a collection of projects, this is a place to share how I think, what I have learned, and where I hope to grow. It reflects my commitment to building secure, reliable systems while staying open to new perspectives and meaningful collaboration.
+
+## 💌 Let's write the next chapter
+
+I'm open to meaningful opportunities, creative collaborations, and conversations that inspire growth.
+
+**[Say hello by email](mailto:doanthao0103@gmail.com)**
+
+[LinkedIn](https://www.linkedin.com/in/thanh-thao-doan) · [Instagram](https://www.instagram.com/dn.ththao/?hl=en) · [Facebook](https://www.facebook.com/profile.php?id=100072568333977)
+
+---
+
+<div align="center">
+
+*Every project is a new quest. Every lesson is another page.*
+
+**Thank you for being part of my story. ✨**
+
+</div>

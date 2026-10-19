@@ -112,23 +112,32 @@
 
   /* ---- Castle wish ---- */
   var wishes = [
-    'I wish for a cluster that heals itself.',
-    'I wish for not one password left in the repo.',
-    'I wish for a terraform plan with no drift.',
-    'I wish for every pull request scanned before merge.',
-    'I wish for traffic that stays inside its own zone.',
-    'I wish for pods that scale before anyone notices.'
+    'I wish for the courage to keep learning, even when the path is uncertain.',
+    'I wish to build things that make life a little better for others.',
+    'I wish for meaningful work, kind people, and the chance to grow together.',
+    'I wish to meet every challenge with patience, curiosity, and resilience.',
+    'I wish for success that leaves room for health, family, and joy.',
+    'I wish to be proud not only of what I achieve, but also of how I get there.',
+    'I wish to turn setbacks into lessons and keep moving forward with hope.',
+    'I wish to have the wisdom to choose what matters and the courage to follow it.',
+    'I wish to share what I learn and help others find their own way forward.',
+    'I wish for small moments of gratitude to make even ordinary days feel special.'
   ];
-  var wi = 0;
   var wishEl = document.getElementById('wish');
-  document.getElementById('castle').addEventListener('click', function () {
-    wishEl.textContent = wishes[wi % wishes.length];
-    wi += 1;
+  var castleBtn = document.getElementById('castle');
+  castleBtn.addEventListener('animationend', function (e) {
+    if (e.animationName === 'castle-glow') castleBtn.classList.remove('glowing');
+  });
+  castleBtn.addEventListener('click', function () {
+    wishEl.textContent = wishes[Math.floor(Math.random() * wishes.length)];
     wishEl.classList.remove('pop');
     void wishEl.offsetWidth;
     wishEl.classList.add('pop');
     fireworks();
     if (!reduce) {
+      castleBtn.classList.remove('glowing');
+      void castleBtn.offsetWidth;
+      castleBtn.classList.add('glowing');
       for (var i = 0; i < 4; i++) {
         var el = lantern({ size: 18 + Math.random() * 14, left: 38 + Math.random() * 24, dur: 9 + Math.random() * 4, delay: 0, sway: (Math.random() - 0.5) * 60, rise: hero.offsetHeight + 40, top: 0, once: true });
         el.style.bottom = (4 + Math.random() * 12) + '%';
@@ -202,7 +211,7 @@
       try { scroller.scrollTo({ left: left, behavior: reduce ? 'auto' : 'smooth' }); } catch (e) { scroller.scrollLeft = left; }
     }
     var max = doc.scrollHeight - window.innerHeight;
-    bar.style.transform = 'scaleX(' + (max > 0 ? Math.min(1, Math.max(0, y / max)) : 0) + ')';
+    bar.style.width = (max > 0 ? Math.min(1, Math.max(0, y / max)) * 100 : 0) + '%';
   }
   function queue() { if (!ticking) { ticking = true; requestAnimationFrame(spy); } }
   window.addEventListener('scroll', queue, { passive: true });
@@ -224,7 +233,7 @@
     var s = window.getSelection(); s.removeAllRanges(); s.addRange(r);
     status.textContent = 'Selected. Use your keyboard to copy.';
   }
-  document.querySelectorAll('.copy').forEach(function (btn) {
+  document.querySelectorAll('.copy[data-value]').forEach(function (btn) {
     btn.addEventListener('click', function () {
       var v = btn.getAttribute('data-value');
       try {
