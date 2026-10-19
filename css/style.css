@@ -1,0 +1,214 @@
+/* Standalone page basics (the hosted preview supplied these automatically) */
+:root { color-scheme: light; }
+body { margin: 0; }
+[hidden] { display: none !important; }
+a.copy { text-decoration: none; display: inline-block; }
+/* Layout: a twilight hero with drifting paper lanterns and a tappable castle (wish + fireworks), a sticky tab bar that tracks the chapter you are reading, then About, Story, Quests, a clickable Spellbook and Contact. */
+:root {
+  --bg: #F7F2FC;
+  --fg: #3A2D5C;
+  --muted: #655A8C;
+  --accent: #D6478E;
+  --gold: #B9791A;
+  --card: #FFFFFF;
+  --line: #E2D6F2;
+  --nav-bg: rgba(247, 242, 252, .9);
+  --hit-bg: rgba(214, 71, 142, .14);
+  --soft-top: #CFE2FF;
+  --soft-bottom: #F9D5EC;
+  /* hero is a twilight scene in both themes */
+  --sky-top: #4A5BB8;
+  --sky-bottom: #B07BC0;
+  --castle: #2B2268;
+  --glow: #FFE9A8;
+  --hero-fg: #FFF8EE;
+  --hero-gold: #FFD98A;
+  --hero-accent: #FFC2DD;
+  --font-display: "Cormorant Garamond", "Palatino Linotype", Georgia, serif;
+  --font-body: "Nunito", "Segoe UI", system-ui, sans-serif;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #14113A; --fg: #F1EBFF; --muted: #B7ABDD; --accent: #FF8EC5; --gold: #FFD36E;
+    --card: #201B4D; --line: #3B3380; --nav-bg: rgba(20, 17, 58, .9); --hit-bg: rgba(255, 142, 197, .2);
+    --soft-top: #1D1656; --soft-bottom: #6A3189;
+    --sky-top: #0F0C33; --sky-bottom: #4A2A7A; --castle: #070520; --hero-accent: #FF8EC5;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #14113A; --fg: #F1EBFF; --muted: #B7ABDD; --accent: #FF8EC5; --gold: #FFD36E;
+  --card: #201B4D; --line: #3B3380; --nav-bg: rgba(20, 17, 58, .9); --hit-bg: rgba(255, 142, 197, .2);
+  --soft-top: #1D1656; --soft-bottom: #6A3189;
+  --sky-top: #0F0C33; --sky-bottom: #4A2A7A; --castle: #070520; --hero-accent: #FF8EC5;
+  color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+body {
+  background: var(--bg); color: var(--fg);
+  font-family: var(--font-body); font-size: 16px; line-height: 1.65;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+  padding-block: 0;
+}
+body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 30; background: var(--nav-bg); }
+h1, h2, h3 { font-family: var(--font-display); text-wrap: balance; line-height: 1.1; margin: 0; }
+p { margin: 0; }
+a { color: var(--accent); }
+button { font: inherit; color: inherit; }
+:focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; border-radius: 6px; }
+.wrap { max-width: 920px; margin: 0 auto; }
+
+/* ---------- Hero ---------- */
+.hero {
+  margin-inline: calc(-1 * max(16px, env(safe-area-inset-left, 0px)));
+  padding-inline: max(16px, env(safe-area-inset-left, 0px));
+  background: linear-gradient(180deg, var(--sky-top), var(--sky-bottom));
+  position: relative; overflow: hidden; color: var(--hero-fg);
+}
+.hero-inner { max-width: 920px; margin: 0 auto; padding-top: 56px; text-align: center; position: relative; z-index: 2; }
+.eyebrow { font-weight: 800; font-size: 13px; letter-spacing: .22em; text-transform: uppercase; color: var(--hero-gold); }
+.hero h1 { font-size: clamp(44px, 9vw, 84px); font-weight: 700; margin-top: 14px; }
+.hero h1 em { font-style: italic; color: var(--hero-accent); }
+.tagline { max-width: 52ch; margin: 18px auto 0; font-size: 18px; }
+.chips { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; margin-top: 22px; }
+.chip { font-size: 13px; font-weight: 700; padding: 5px 12px; border-radius: 999px; background: rgba(255, 255, 255, .16); border: 1px solid rgba(255, 255, 255, .38); }
+.wish { margin-top: 26px; min-height: 2.1em; font-family: var(--font-display); font-style: italic; font-weight: 700; font-size: 24px; line-height: 1.25; color: var(--hero-gold); text-wrap: balance; }
+.wish.pop { animation: wishin .6s ease-out; }
+@keyframes wishin { from { opacity: 0; transform: translateY(8px) scale(.97); } to { opacity: 1; transform: none; } }
+.castle-wrap { width: min(560px, 100%); margin: 4px auto 0; }
+.castle-btn { display: block; width: 100%; background: none; border: 0; padding: 0; cursor: pointer; }
+.castle-btn svg { display: block; width: 100%; height: auto; transition: transform .2s; }
+.castle-btn:hover svg { transform: translateY(-3px); }
+.star { position: absolute; color: var(--glow); z-index: 0; animation: twinkle 3.6s ease-in-out infinite; }
+.star:nth-of-type(2n) { animation-delay: -1.2s; }
+.star:nth-of-type(3n) { animation-delay: -2.4s; }
+@keyframes twinkle { 0%, 100% { opacity: .3; transform: scale(.8); } 50% { opacity: 1; transform: scale(1.1); } }
+
+/* Paper lanterns */
+.lanterns { position: absolute; inset: 0; z-index: 1; pointer-events: none; }
+.lantern {
+  position: absolute; bottom: -70px; opacity: 0;
+  border-radius: 42% 42% 20% 20% / 38% 38% 14% 14%;
+  background: linear-gradient(180deg, #FFF3C4 0%, #FFCB61 58%, #F2922F 100%);
+  box-shadow: 0 0 16px 5px rgba(255, 198, 92, .55), 0 0 46px 14px rgba(255, 170, 60, .24);
+  animation: rise var(--dur) linear var(--delay) infinite;
+}
+.lantern::after { content: ""; position: absolute; left: 30%; right: 30%; bottom: -3px; height: 4px; border-radius: 3px; background: #A85A1A; }
+.lantern.once { animation-iteration-count: 1; animation-fill-mode: forwards; animation-delay: 0s; }
+@keyframes rise {
+  0% { transform: translate(0, 0); opacity: 0; }
+  8% { opacity: .95; }
+  35% { transform: translate(var(--sway), calc(var(--rise) * -.35)); }
+  68% { transform: translate(calc(var(--sway) * -.7), calc(var(--rise) * -.7)); opacity: .9; }
+  100% { transform: translate(calc(var(--sway) * .5), calc(var(--rise) * -1)); opacity: 0; }
+}
+.fx { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; z-index: 4; }
+
+@media (prefers-reduced-motion: reduce) {
+  .star { animation: none; opacity: .8; }
+  .lantern { animation: none; opacity: .9; }
+  .castle-btn svg, .wish.pop { transition: none; animation: none; }
+}
+
+/* ---------- Sticky chapter tabs ---------- */
+.tabs {
+  position: sticky; top: env(safe-area-inset-top, 0px); z-index: 25;
+  margin-inline: calc(-1 * max(16px, env(safe-area-inset-left, 0px)));
+  background: var(--nav-bg); -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--line);
+}
+.tabs-scroll {
+  max-width: 920px; margin: 0 auto; display: flex; gap: 6px; overflow-x: auto; scrollbar-width: none;
+  padding-inline: max(16px, env(safe-area-inset-left, 0px));
+}
+.tabs-scroll::-webkit-scrollbar { display: none; }
+.tab {
+  flex: none; padding: 13px 12px 11px; font-weight: 800; font-size: 14px; text-decoration: none; color: var(--muted);
+  border-bottom: 3px solid transparent;
+}
+.tab:hover { color: var(--fg); }
+.tab.on { color: var(--fg); border-bottom-color: var(--accent); }
+.progress { position: absolute; left: 0; right: 0; bottom: -1px; height: 3px; background: var(--gold); transform: scaleX(0); transform-origin: left; }
+
+/* ---------- Sections ---------- */
+section { padding-block: 64px 8px; scroll-margin-top: 56px; }
+.chapter-label { font-weight: 800; font-size: 13px; letter-spacing: .2em; text-transform: uppercase; color: var(--gold); }
+h2 { font-size: clamp(32px, 6vw, 48px); font-weight: 700; margin-top: 8px; }
+.lede { max-width: 62ch; margin-top: 14px; color: var(--muted); }
+
+.about-grid { display: grid; grid-template-columns: 1.4fr 1fr; gap: 28px; margin-top: 24px; align-items: start; }
+.about-grid > * { min-width: 0; }
+.facts { background: var(--card); border: 1px solid var(--line); border-radius: 20px; padding: 20px 22px; }
+.facts dl { margin: 0; display: grid; gap: 14px; }
+.fact dt { font-size: 12px; font-weight: 800; letter-spacing: .14em; text-transform: uppercase; color: var(--muted); }
+.fact dd { margin: 2px 0 0; font-weight: 600; }
+
+/* Timeline: real chronology, newest first */
+.path { list-style: none; margin: 28px 0 0; padding: 0; display: grid; gap: 22px; position: relative; }
+.path::before {
+  content: ""; position: absolute; left: 13px; top: 8px; bottom: 8px; width: 3px; border-radius: 3px;
+  background: repeating-linear-gradient(180deg, var(--accent) 0 8px, transparent 8px 16px); opacity: .6;
+}
+.path > li { position: relative; padding-left: 46px; }
+.path > li::before {
+  content: "\2726"; position: absolute; left: 0; top: 2px; width: 28px; height: 28px; border-radius: 50%;
+  background: var(--card); border: 2px solid var(--accent); color: var(--accent);
+  display: grid; place-items: center; font-size: 14px;
+}
+.when { font-size: 13px; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; color: var(--gold); }
+.path h3 { font-size: 28px; margin-top: 4px; }
+.org { color: var(--muted); font-weight: 600; }
+.path ul { margin: 10px 0 0; padding-left: 20px; display: grid; gap: 6px; max-width: 68ch; }
+
+/* Skill highlighting */
+[data-skills] { transition: opacity .25s, background-color .25s, box-shadow .25s, border-color .25s; }
+[data-skills].dim { opacity: .3; }
+li[data-skills].hit { background: var(--hit-bg); box-shadow: 0 0 0 5px var(--hit-bg); border-radius: 6px; }
+.quest.hit { border-color: var(--accent); box-shadow: 0 0 0 3px var(--hit-bg), 0 8px 24px var(--hit-bg); }
+@media (prefers-reduced-motion: reduce) { [data-skills] { transition: none; } }
+
+/* Quests */
+.quests { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 270px), 1fr)); gap: 18px; margin-top: 28px; }
+.quest { background: var(--card); border: 1px solid var(--line); border-radius: 24px; padding: 22px; display: flex; flex-direction: column; gap: 12px; min-width: 0; }
+.quest .when { color: var(--accent); }
+.quest h3 { font-size: 26px; }
+.quest p { color: var(--muted); font-size: 15px; }
+.quest ul { margin: 0; padding-left: 18px; display: grid; gap: 6px; font-size: 15px; }
+.tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: auto; padding-top: 6px; }
+.tag { font-size: 12px; font-weight: 700; padding: 3px 10px; border-radius: 999px; background: var(--bg); border: 1px solid var(--line); }
+
+/* Spellbook */
+.spells { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 250px), 1fr)); gap: 16px; margin-top: 24px; }
+.spell { border-radius: 20px; padding: 18px 20px; border: 1px dashed var(--accent); background: var(--card); min-width: 0; }
+.spell h3 { font-size: 22px; color: var(--accent); }
+.skills { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
+.skill { cursor: pointer; font-size: 14px; font-weight: 700; padding: 5px 13px; border-radius: 999px; background: var(--bg); border: 1px solid var(--line); }
+.skill:hover { border-color: var(--accent); }
+.skill[aria-pressed="true"] { background: var(--accent); border-color: var(--accent); color: var(--bg); }
+.skill-bar { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; margin-top: 16px; min-height: 2.2em; }
+.skill-status { color: var(--muted); font-size: 15px; }
+.link-btn { cursor: pointer; background: none; border: 0; padding: 0; color: var(--accent); font-weight: 800; text-decoration: underline; }
+.link-btn[hidden] { display: none; }
+
+/* Contact */
+.contact { margin-top: 64px; padding: 36px 24px; border-radius: 28px; text-align: center; background: linear-gradient(180deg, var(--soft-top), var(--soft-bottom)); border: 1px solid var(--line); }
+.contact h2 { margin-top: 6px; }
+.contact-row { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; margin-top: 22px; }
+.copy { cursor: pointer; font-weight: 700; padding: 10px 18px; border-radius: 999px; background: var(--card); color: var(--fg); border: 2px solid var(--accent); max-width: 100%; overflow-wrap: anywhere; }
+.copy:hover { background: var(--accent); color: var(--bg); }
+.status { min-height: 1.6em; margin-top: 12px; font-size: 14px; color: var(--muted); }
+footer { text-align: center; color: var(--muted); font-size: 14px; padding-block: 28px 72px; }
+
+.theme-btn {
+  position: fixed; z-index: 40; cursor: pointer; font-weight: 800; font-size: 14px; padding: 9px 16px; border-radius: 999px;
+  right: max(16px, env(safe-area-inset-right, 0px)); bottom: calc(16px + env(safe-area-inset-bottom, 0px));
+  background: var(--card); border: 2px solid var(--accent); box-shadow: 0 4px 16px var(--hit-bg);
+}
+
+@media (max-width: 720px) {
+  .about-grid { grid-template-columns: 1fr; }
+  .hero-inner { padding-top: 40px; }
+  .wish { font-size: 21px; }
+}

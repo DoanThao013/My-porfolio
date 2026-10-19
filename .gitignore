@@ -1,0 +1,16 @@
+# OS files
+.DS_Store
+Thumbs.db
+
+# Secrets and local config: never commit these
+.env
+.env.*
+*.pem
+*.key
+
+# Editors
+.vscode/
+.idea/
+
+# Dependencies, if you add a build step later
+node_modules/

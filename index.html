@@ -1,0 +1,242 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Doan Thanh Thao | Cloud and DevSecOps Portfolio</title>
+<meta name="description" content="Portfolio of Doan Thanh Thao, a networking student working on cloud infrastructure, Kubernetes, Terraform and DevSecOps.">
+<meta name="theme-color" content="#4A5BB8">
+<link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,700;1,500;1,700&family=Nunito:wght@400;600;800&display=swap">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><symbol id="sp" viewBox="0 0 24 24"><path fill="currentColor" d="M12 0l2.6 9.4L24 12l-9.4 2.6L12 24l-2.6-9.4L0 12l9.4-2.6z"/></symbol></svg>
+
+<header class="hero" id="top">
+  <svg class="star" style="left:8%;top:12%" width="20" height="20" aria-hidden="true"><use href="#sp"/></svg>
+  <svg class="star" style="left:90%;top:9%" width="14" height="14" aria-hidden="true"><use href="#sp"/></svg>
+  <svg class="star" style="left:24%;top:30%" width="11" height="11" aria-hidden="true"><use href="#sp"/></svg>
+  <svg class="star" style="left:74%;top:24%" width="16" height="16" aria-hidden="true"><use href="#sp"/></svg>
+  <svg class="star" style="left:52%;top:5%" width="12" height="12" aria-hidden="true"><use href="#sp"/></svg>
+  <svg class="star" style="left:3%;top:48%" width="12" height="12" aria-hidden="true"><use href="#sp"/></svg>
+  <svg class="star" style="left:95%;top:44%" width="11" height="11" aria-hidden="true"><use href="#sp"/></svg>
+  <div class="lanterns" id="lanterns" aria-hidden="true"></div>
+  <canvas class="fx" id="fx" aria-hidden="true"></canvas>
+
+  <div class="hero-inner">
+    <p class="eyebrow">Once upon a cluster</p>
+    <h1>Doan <em>Thanh</em> Thao</h1>
+    <p class="tagline">Third-year networking student who builds cloud infrastructure, ships it in containers and keeps the secrets safe.</p>
+    <div class="chips">
+      <span class="chip">DevSecOps</span><span class="chip">Kubernetes</span><span class="chip">Terraform</span><span class="chip">AWS &amp; GCP</span>
+    </div>
+    <p class="wish" id="wish" role="status" aria-live="polite">Tap the castle to make a wish.</p>
+    <div class="castle-wrap">
+      <button class="castle-btn" id="castle" type="button" aria-label="Make a wish on the castle">
+        <svg viewBox="0 0 560 250" role="img" aria-label="A small castle in silhouette with lit windows and pennant flags">
+          <g fill="var(--castle)">
+            <rect x="0" y="236" width="560" height="14"/>
+            <rect x="230" y="110" width="100" height="130"/><path d="M222 112h116L280 52z"/>
+            <rect x="150" y="150" width="52" height="90"/><path d="M144 152h64l-32-62z"/>
+            <rect x="358" y="150" width="52" height="90"/><path d="M352 152h64l-32-62z"/>
+            <rect x="70" y="190" width="44" height="50"/><path d="M64 192h56l-28-50z"/>
+            <rect x="446" y="190" width="44" height="50"/><path d="M440 192h56l-28-50z"/>
+            <rect x="114" y="212" width="36" height="28"/><rect x="202" y="196" width="28" height="44"/>
+            <rect x="330" y="196" width="28" height="44"/><rect x="410" y="212" width="36" height="28"/>
+          </g>
+          <path d="M268 240v-34a12 12 0 0 1 24 0v34z" fill="var(--glow)" opacity=".55"/>
+          <g stroke="var(--castle)" stroke-width="3" fill="none">
+            <path d="M280 52V22"/><path d="M176 90V64"/><path d="M384 90V64"/><path d="M92 142v-22"/><path d="M468 142v-22"/>
+          </g>
+          <g fill="var(--hero-accent)">
+            <path d="M280 22l24 8-24 8z"/><path d="M176 64l18 6-18 6z"/><path d="M384 64l18 6-18 6z"/><path d="M92 120l14 5-14 5z"/><path d="M468 120l14 5-14 5z"/>
+          </g>
+          <g fill="var(--glow)">
+            <rect x="270" y="128" width="12" height="22" rx="6"/><rect x="298" y="128" width="12" height="22" rx="6"/>
+            <rect x="270" y="168" width="12" height="18" rx="6"/>
+            <rect x="170" y="168" width="10" height="18" rx="5"/><rect x="378" y="168" width="10" height="18" rx="5"/>
+            <rect x="88" y="206" width="8" height="14" rx="4"/><rect x="464" y="206" width="8" height="14" rx="4"/>
+          </g>
+        </svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<nav class="tabs" aria-label="Chapters">
+  <div class="tabs-scroll" id="tabs-scroll">
+    <a class="tab" href="#about" data-target="about">About</a>
+    <a class="tab" href="#chapters" data-target="chapters">Story</a>
+    <a class="tab" href="#quests" data-target="quests">Quests</a>
+    <a class="tab" href="#spellbook" data-target="spellbook">Spellbook</a>
+    <a class="tab" href="#contact" data-target="contact">Contact</a>
+  </div>
+  <div class="progress" id="progress"></div>
+</nav>
+
+<main class="wrap">
+  <section id="about">
+    <p class="chapter-label">Chapter one</p>
+    <h2>About the storyteller</h2>
+    <div class="about-grid">
+      <div>
+        <p>I study Computer Networks and Data Communication at the University of Information Technology, VNU-HCM. I like the moment when a network diagram, a Terraform plan and a running cluster all agree with each other.</p>
+        <p style="margin-top:14px">This year I replaced static credentials with short-lived secrets in a CI/CD pipeline, delivered a full-stack app at a bank, and designed multi-site networks on AWS. Next I want to keep growing as a DevSecOps and cloud engineer.</p>
+      </div>
+      <div class="facts">
+        <dl>
+          <div class="fact"><dt>Studying</dt><dd>B.Sc. Computer Networks, Sep 2023 to May 2027</dd></div>
+          <div class="fact"><dt>GPA</dt><dd>3.5</dd></div>
+          <div class="fact"><dt>English</dt><dd>IELTS 6.0 (2023)</dd></div>
+          <div class="fact"><dt>Learning</dt><dd>Kubernetes with KodeKloud</dd></div>
+        </dl>
+      </div>
+    </div>
+  </section>
+
+  <section id="chapters">
+    <p class="chapter-label">Chapter two</p>
+    <h2>Where the story has been</h2>
+    <ol class="path">
+      <li>
+        <p class="when">Jul to Sep 2026</p>
+        <h3>DevSecOps Intern</h3>
+        <p class="org">VNPT</p>
+        <ul>
+          <li data-skills="openbao">Deployed OpenBao as the central secrets manager, replacing static credentials with short-TTL secrets injected at runtime across the CI/CD pipeline.</li>
+          <li data-skills="onedev trivy sonarqube">Ran a security pipeline on OneDev for every pull request, reading Trivy and SonarQube results in Telegram before code merged.</li>
+          <li data-skills="superset zabbix wazuh">Watched infrastructure and source code through Apache Superset dashboards fed by Zabbix and Wazuh.</li>
+        </ul>
+      </li>
+      <li>
+        <p class="when">Mar to Jun 2026</p>
+        <h3>Software Engineer Intern</h3>
+        <p class="org">National Australia Bank (NAB)</p>
+        <ul>
+          <li data-skills="">Put operating systems, networking, frontend and backend basics to work by delivering a full-stack web application end to end.</li>
+        </ul>
+      </li>
+      <li>
+        <p class="when">Jul 2024 to Jan 2025</p>
+        <h3>Volunteering Member</h3>
+        <p class="org">AIESEC</p>
+        <ul>
+          <li data-skills="">Co-organised educational events for 200+ attendees, covering logistics and marketing.</li>
+        </ul>
+      </li>
+    </ol>
+  </section>
+
+  <section id="quests">
+    <p class="chapter-label">Chapter three</p>
+    <h2>Quests I completed</h2>
+    <div class="quests">
+      <article class="quest" data-skills="gcp kubernetes terraform ansible">
+        <p class="when">Mar to Jun 2026</p>
+        <h3>GCP Infrastructure for RobotShop</h3>
+        <p>A full Google Cloud environment for a microservices demo, created from code.</p>
+        <ul>
+          <li>Modular Terraform for a VPC with staging and production subnets, firewall rules, and a GKE cluster with Workload Identity and HPA, up with one <code>terraform apply</code>.</li>
+          <li>Terraform state on GCS with workspaces, so teammates stopped colliding.</li>
+          <li>Ansible playbooks hardened each namespace with Workload Identity bindings, ResourceQuota and NetworkPolicy.</li>
+        </ul>
+        <div class="tags"><span class="tag">GCP</span><span class="tag">GKE</span><span class="tag">Terraform</span><span class="tag">Ansible</span><span class="tag">Secret Manager</span></div>
+      </article>
+      <article class="quest" data-skills="aws wireguard tcpip subnetting segmentation">
+        <p class="when">May to Jun 2026</p>
+        <h3>AWS Multi-Site Network</h3>
+        <p>An enterprise network with separate zones for exam, staff, guest and IoT traffic.</p>
+        <ul>
+          <li>Planned IP addressing, subnet segmentation and routing between sites.</li>
+          <li>Layered access controls, WireGuard VPN for remote access and NAT for outbound traffic.</li>
+          <li>Monitoring and automated backup, with traffic isolation tested between zones.</li>
+        </ul>
+        <div class="tags"><span class="tag">AWS VPC</span><span class="tag">Security Groups</span><span class="tag">WireGuard</span><span class="tag">CloudWatch</span></div>
+      </article>
+      <article class="quest" data-skills="gcp linux">
+        <p class="when">Sep to Nov 2025</p>
+        <h3>Distributed Private Cloud</h3>
+        <p>An IaaS cloud of my own, running on top of GCP.</p>
+        <ul>
+          <li>Deployed Apache CloudStack and managed the full VM lifecycle, from provisioning to resource allocation.</li>
+          <li>Used Linux Bridge to keep guest VM traffic apart from management traffic across the Zone, Pod and Cluster hierarchy.</li>
+        </ul>
+        <div class="tags"><span class="tag">CloudStack</span><span class="tag">KVM</span><span class="tag">GCP</span><span class="tag">Linux Bridge</span></div>
+      </article>
+    </div>
+  </section>
+
+  <section id="spellbook">
+    <p class="chapter-label">Chapter four</p>
+    <h2>The spellbook</h2>
+    <p class="lede">Tap a skill to light up the quests and chapter notes where it was used.</p>
+    <div class="skill-bar">
+      <p class="skill-status" id="skill-status" role="status" aria-live="polite">Nothing selected yet.</p>
+      <button class="link-btn" id="skill-clear" type="button" hidden>Clear</button>
+    </div>
+    <div class="spells">
+      <div class="spell"><h3>Cloud &amp; Infrastructure</h3><div class="skills">
+        <button class="skill" type="button" data-skill="aws" aria-pressed="false">AWS</button>
+        <button class="skill" type="button" data-skill="gcp" aria-pressed="false">GCP</button>
+        <button class="skill" type="button" data-skill="terraform" aria-pressed="false">Terraform</button>
+        <button class="skill" type="button" data-skill="ansible" aria-pressed="false">Ansible</button>
+        <button class="skill" type="button" data-skill="linux" aria-pressed="false">Linux</button>
+      </div></div>
+      <div class="spell"><h3>Containers</h3><div class="skills">
+        <button class="skill" type="button" data-skill="kubernetes" aria-pressed="false">Kubernetes</button>
+        <button class="skill" type="button" data-skill="docker" aria-pressed="false">Docker</button>
+        <button class="skill" type="button" data-skill="helm" aria-pressed="false">Helm</button>
+      </div></div>
+      <div class="spell"><h3>CI/CD &amp; DevSecOps</h3><div class="skills">
+        <button class="skill" type="button" data-skill="onedev" aria-pressed="false">OneDev</button>
+        <button class="skill" type="button" data-skill="sonarqube" aria-pressed="false">SonarQube</button>
+        <button class="skill" type="button" data-skill="trivy" aria-pressed="false">Trivy</button>
+        <button class="skill" type="button" data-skill="openbao" aria-pressed="false">OpenBao</button>
+      </div></div>
+      <div class="spell"><h3>Monitoring</h3><div class="skills">
+        <button class="skill" type="button" data-skill="zabbix" aria-pressed="false">Zabbix</button>
+        <button class="skill" type="button" data-skill="wazuh" aria-pressed="false">Wazuh</button>
+        <button class="skill" type="button" data-skill="superset" aria-pressed="false">Superset</button>
+      </div></div>
+      <div class="spell"><h3>Networking</h3><div class="skills">
+        <button class="skill" type="button" data-skill="tcpip" aria-pressed="false">TCP/IP</button>
+        <button class="skill" type="button" data-skill="subnetting" aria-pressed="false">Subnetting and CIDR</button>
+        <button class="skill" type="button" data-skill="wireguard" aria-pressed="false">WireGuard VPN</button>
+        <button class="skill" type="button" data-skill="haproxy" aria-pressed="false">HAProxy</button>
+        <button class="skill" type="button" data-skill="nginx" aria-pressed="false">Nginx</button>
+        <button class="skill" type="button" data-skill="segmentation" aria-pressed="false">Network segmentation</button>
+      </div></div>
+      <div class="spell"><h3>Languages</h3><div class="skills">
+        <button class="skill" type="button" data-skill="python" aria-pressed="false">Python</button>
+        <button class="skill" type="button" data-skill="bash" aria-pressed="false">Bash</button>
+        <button class="skill" type="button" data-skill="java" aria-pressed="false">Java</button>
+        <button class="skill" type="button" data-skill="sql" aria-pressed="false">SQL</button>
+        <button class="skill" type="button" data-skill="git" aria-pressed="false">Git</button>
+      </div></div>
+    </div>
+  </section>
+
+  <section class="contact" id="contact">
+    <p class="chapter-label">The end, or the next page</p>
+    <h2>Let's write the next chapter</h2>
+    <p class="lede" style="margin-inline:auto">Open to internships and projects in cloud, DevOps and security. Tap a button to copy.</p>
+    <div class="contact-row">
+      <button class="copy" type="button" data-value="doanthao0103@gmail.com">doanthao0103@gmail.com</button>
+      <button class="copy" type="button" data-value="+84 393 722 173">+84 393 722 173</button>
+      <!-- Add your profile links here once you have the URLs:
+      <a class="copy" href="https://github.com/YOUR-USERNAME" target="_blank" rel="noopener">GitHub</a>
+      <a class="copy" href="https://www.linkedin.com/in/YOUR-PROFILE" target="_blank" rel="noopener">LinkedIn</a>
+    -->
+    </div>
+    <p class="status" id="status" role="status" aria-live="polite"></p>
+  </section>
+</main>
+
+<footer>Doan Thanh Thao &middot; Ho Chi Minh City</footer>
+
+<button class="theme-btn" id="theme" type="button" aria-pressed="false">Night sky</button>
+
+<script src="js/main.js"></script>
+</body>
+</html>
